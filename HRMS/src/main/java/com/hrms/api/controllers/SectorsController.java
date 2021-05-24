@@ -1,6 +1,8 @@
 package com.hrms.api.controllers;
 
 import com.hrms.business.abstracts.SectorService;
+import com.hrms.core.utilities.results.DataResult;
+import com.hrms.core.utilities.results.Result;
 import com.hrms.entities.concretes.Sector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +24,12 @@ public class SectorsController {
     }
 
    @PostMapping("addSector")
-    public void getpls(@RequestBody Sector sector) {
-       this._sectorService.add(sector);
-       //return sector.getSectorName();
+    public Result add(@RequestBody Sector sector) {
+        return (this._sectorService.add(sector));
    }
 
    @GetMapping("getAll")
-    public List<Sector> getAll(){
+    public DataResult<List<Sector>> getAll(){
         return _sectorService.getAll();
    }
 }

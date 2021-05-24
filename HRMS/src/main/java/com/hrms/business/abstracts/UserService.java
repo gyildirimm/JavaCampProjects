@@ -1,9 +1,8 @@
 package com.hrms.business.abstracts;
 
-import com.hrms.entities.concretes.User;
-
-import java.util.List;
+import com.hrms.core.utilities.results.Result;
+import com.hrms.entities.dtos.RegisterUserModel;
 
 public interface UserService {
-    List<User> getAll();
+    Result registerUser(RegisterUserModel user);
 }

@@ -21,5 +21,5 @@ public class UserJob {
     private String userId;
 
     @Column(name = "job_id")
-    private String jobId;
+    private int jobId;
 }

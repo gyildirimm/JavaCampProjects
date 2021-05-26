@@ -17,7 +17,7 @@ public class UserJobsController {
     @Autowired
     private UserJobService _userJobService;
 
-    @GetMapping("getAll")
+    @GetMapping("/getAll")
     public DataResult<List<UserJob>> getAll(){
         return _userJobService.getAll();
     }

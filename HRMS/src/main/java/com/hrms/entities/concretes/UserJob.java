@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Table(name = "tbl_user_jobs")
 @Entity
@@ -18,7 +19,7 @@ public class UserJob {
     private int Id;
 
     @Column(name = "user_id")
-    private String userId;
+    private UUID userId;
 
     @Column(name = "job_id")
     private int jobId;

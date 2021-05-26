@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class UserManager implements UserService {
@@ -27,7 +26,7 @@ public class UserManager implements UserService {
 
     @Override
     public Result registerUser(RegisterUserModel user) {
-        var validResult = BusinessRules.Run
+        Result validResult = BusinessRules.Run
                 (
                     checkPasswordEquals(user.getPassword(), user.getPasswordRepeat()),
                     checkUniqueEmail(user.getEmail()),
@@ -48,7 +47,7 @@ public class UserManager implements UserService {
                 false
                 );
         _userDao.save(newUser);
-        if (newUser.getId().length() > 0) {
+        if (newUser.getId() != null) {
             if (user.getUserJobId() == null) {
                 user.setUserJobId(new ArrayList<Integer>());
             }
@@ -60,6 +59,11 @@ public class UserManager implements UserService {
         }else {
             return new ErrorResult("Kullanıcı oluşturulamadı");
         }
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return _userDao.findByEmail(email);
     }
 
     private Result checkUniqueEmail(String email) {

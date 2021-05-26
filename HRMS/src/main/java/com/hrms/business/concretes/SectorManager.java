@@ -27,6 +27,6 @@ public class SectorManager implements SectorService {
 
     @Override
     public DataResult<List<Sector>> getAll() {
-        return new SuccessDataResult<List<Sector>>(_sectorDao.findAll(), "Ürün Listesi");
+        return new SuccessDataResult<List<Sector>>(_sectorDao.findAll(), "Sektör Listesi");
     }
 }

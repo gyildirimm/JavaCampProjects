@@ -3,10 +3,12 @@ package com.hrms.entities.concretes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.UUID;
 
 @Table(name = "tbl_users")
 @Entity
@@ -15,10 +17,10 @@ import java.util.Date;
 @NoArgsConstructor
 public class User {
 
-    @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "UUID")
-    private String Id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID Id;
 
     @Column(name = "first_name")
     private String firstName;

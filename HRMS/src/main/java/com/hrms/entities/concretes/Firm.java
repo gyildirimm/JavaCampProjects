@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Table(name = "tbl_firms")
 @Entity
@@ -20,7 +21,7 @@ public class Firm {
     private int Id;
 
     @Column(name = "user_id")
-    private String userId;
+    private UUID userId;
 
     @Column(name = "name")
     private String firmName;

@@ -23,12 +23,12 @@ public class SectorsController {
         this._sectorService = sectorService;
     }
 
-   @PostMapping("addSector")
+   @PostMapping("/addSector")
     public Result add(@RequestBody Sector sector) {
         return (this._sectorService.add(sector));
    }
 
-   @GetMapping("getAll")
+   @GetMapping("/getAll")
     public DataResult<List<Sector>> getAll(){
         return _sectorService.getAll();
    }

@@ -19,11 +19,14 @@ import java.util.List;
 @Service
 public class FirmManager implements FirmService {
 
-    @Autowired
     private FirmDao _firmDao;
+    private UserService _userService;
 
     @Autowired
-    private UserService _userService;
+    public FirmManager(FirmDao _firmDao, UserService _userService) {
+        this._firmDao = _firmDao;
+        this._userService = _userService;
+    }
 
     @Override
     public DataResult<List<Firm>> getAll() {
@@ -56,11 +59,16 @@ public class FirmManager implements FirmService {
                 false
         );
         _firmDao.save(newFirm);
-        if (newFirm.getId() > 0) {
+        if (newFirm.getFirmId() > 0) {
             return new SuccessResult("Firma oluşturuldu");
         }else {
             return new ErrorResult("Firma oluşturulamadı");
         }
+    }
+
+    @Override
+    public Firm getFirmById(int id) {
+        return this._firmDao.getOne(id);
     }
 
     private Result checkUniqueEmail(String email) {

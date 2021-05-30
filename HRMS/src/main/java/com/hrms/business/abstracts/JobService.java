@@ -9,4 +9,5 @@ import java.util.List;
 public interface JobService {
     Result add(Job job);
     DataResult<List<Job>> getAll();
+    Job getJobById(int id);
 }

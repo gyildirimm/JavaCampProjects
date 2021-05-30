@@ -30,4 +30,9 @@ public class JobManager implements JobService {
     public DataResult<List<Job>> getAll() {
         return new SuccessDataResult<List<Job>>(_jobDao.findAll(), "İş Listesi");
     }
+
+    @Override
+    public Job getJobById(int id) {
+        return this._jobDao.getOne(id);
+    }
 }

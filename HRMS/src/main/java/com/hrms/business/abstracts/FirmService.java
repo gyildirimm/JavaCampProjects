@@ -10,4 +10,5 @@ import java.util.List;
 public interface FirmService {
     DataResult<List<Firm>> getAll();
     Result registerFirm(RegisterFirmModel firm);
+    Firm getFirmById(int id);
 }

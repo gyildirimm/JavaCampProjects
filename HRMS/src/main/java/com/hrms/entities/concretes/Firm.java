@@ -18,7 +18,7 @@ public class Firm {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int firmId;
 
     @Column(name = "user_id")
     private UUID userId;

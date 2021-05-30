@@ -1,8 +1,10 @@
 package com.hrms.api.controllers;
 
+import com.hrms.business.abstracts.JobService;
 import com.hrms.business.abstracts.SectorService;
 import com.hrms.core.utilities.results.DataResult;
 import com.hrms.core.utilities.results.Result;
+import com.hrms.entities.concretes.Job;
 import com.hrms.entities.concretes.Sector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,20 +18,29 @@ import java.util.List;
 @RequestMapping("/api/sectors")
 public class SectorsController {
 
+    @Autowired
     private SectorService _sectorService;
 
     @Autowired
-    public SectorsController(SectorService sectorService) {
-        this._sectorService = sectorService;
-    }
+    private JobService _jobService;
 
    @PostMapping("/addSector")
     public Result add(@RequestBody Sector sector) {
         return (this._sectorService.add(sector));
    }
 
-   @GetMapping("/getAll")
-    public DataResult<List<Sector>> getAll(){
+   @GetMapping("/getAllSectors")
+    public DataResult<List<Sector>> getAllSectors(){
         return _sectorService.getAll();
    }
+
+    @PostMapping("/addJob")
+    public Result add(@RequestBody Job job) {
+        return (this._jobService.add(job));
+    }
+
+    @GetMapping("/getAllJobs")
+    public DataResult<List<Job>> getAllJobs(){
+        return _jobService.getAll();
+    }
 }
